@@ -69,6 +69,7 @@ public class testAgenda {
                     agenda.setNumeroTelefono(teclado.nextInt());
                     
                     agenda.agregarNuevoContacto(agenda.getNombre(), agenda.getApellido(), agenda.getFechaNacimiento(), agenda.getEmail(), agenda.getNumeroTelefono());
+                    
                     System.out.println("\n");
                     continue;
                 case 4:
@@ -95,7 +96,9 @@ public class testAgenda {
                     System.out.println("Seleccione el contacto a Eliminar \n");
                     agenda.verTodosContactos();
                     Integer idEliminar = teclado.nextInt();
+                    agenda.agregarHistoricosEliminados(idEliminar);
                     agenda.eliminarContacto(idEliminar);
+                    
                     System.out.println("\n");
                     continue;
                 case 6:

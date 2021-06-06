@@ -33,13 +33,14 @@ CREATE TABLE CONTACTOS (ID_CONTACTO smallint auto_increment,
                         TELEFONO int(40),
                         primary key (ID_CONTACTO));
 
-CREATE TABLE CONTACTOS_HIST (ID_CONTACTO smallint,
+CREATE TABLE CONTACTOS_HIST (ID_HIST smallint auto_increment,
 						NOMBRE varchar(40),
                         APELLIDO varchar(40),
                         FECHA_NACIMIENTO date,
                         EMAIL varchar(40),
                         TELEFONO int(40),
-                        primary key (ID_CONTACTO));
+                        ID_ORIGINAL smallint,
+                        primary key (ID_HIST));
                         
 /*INSERTAR VALORES*/
 

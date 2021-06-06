@@ -238,4 +238,36 @@ public class agenda {
             return " ";
         }
     }
+    
+    public void agregarHistoricosEliminados(Integer id) {
+
+        try {
+            String query = "SELECT * FROM CONTACTOS WHERE ID_CONTACTO= ?";
+
+            PreparedStatement preparacion = db.getCon().prepareStatement(query);
+            preparacion.setInt(1, id);
+            resultado = preparacion.executeQuery();
+
+            if (resultado != null) {
+                while (resultado.next()) {
+                String queryCopia = "INSERT INTO CONTACTOS_HIST (NOMBRE,APELLIDO,FECHA_NACIMIENTO,EMAIL,TELEFONO,ID_ORIGINAL)" + "VALUES(?,?,?,?,?,?)";
+
+                PreparedStatement preCopia = db.getCon().prepareStatement(queryCopia);
+                preCopia.setString(1, resultado.getString("NOMBRE"));
+                preCopia.setString(2, resultado.getString("APELLIDO"));
+                preCopia.setString(3, resultado.getString("FECHA_NACIMIENTO"));
+                preCopia.setString(4, resultado.getString("EMAIL"));
+                preCopia.setInt(5, resultado.getInt("TELEFONO")); 
+                preCopia.setInt(6, resultado.getInt("ID_CONTACTO"));                 
+                preCopia.execute();
+                
+                    System.out.println("Agregado a Historico");
+                }
+            } else {
+                System.out.println("No agregado a Historico");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }
