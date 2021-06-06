@@ -86,8 +86,8 @@ public class agenda {
             String query = "SELECT * FROM CONTACTOS WHERE NOMBRE LIKE ? OR APELLIDO LIKE ?";
 
             PreparedStatement preparacion = db.getCon().prepareStatement(query);
-            preparacion.setString(1, clave.toUpperCase());
-            preparacion.setString(2, clave.toUpperCase());
+            preparacion.setString(1, "%" + clave.toUpperCase() + "%");
+            preparacion.setString(2, "%" + clave.toUpperCase() +"%");
 
             resultado = preparacion.executeQuery();
 
