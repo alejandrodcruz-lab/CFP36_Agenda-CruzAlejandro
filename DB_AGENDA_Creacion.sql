@@ -20,6 +20,8 @@
 	
 4. subir el proyecto a github(diagrama, .sql, proyecto netbeans).*/
 /*DROP DATABASE DB_AGENDA;*/
+
+/*mysqldump -h 127.0.0.1 -P 33666 -u root -p db_agenda > agendaBK.sql*/
 CREATE DATABASE DB_AGENDA;
 USE DB_AGENDA;
 
